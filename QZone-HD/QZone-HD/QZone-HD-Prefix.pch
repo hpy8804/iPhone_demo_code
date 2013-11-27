@@ -1,0 +1,20 @@
+//
+// Prefix header for all source files of the 'QZone-HD' target in the 'QZone-HD' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#import "UIImage+Fit.h"
+#import "NSString+File.h"
+#import "NSObject+Value.h"
+#import "Common.h"
+#import "UIBarButtonItem+Addition.h"
+#import "UIButton+Image.h"
+#endif
