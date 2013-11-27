@@ -1,0 +1,149 @@
+//
+//  HBTalkData.m
+//  MyTest
+//
+//  Created by weqia on 13-8-11.
+//  Copyright (c) 2013年 weqia. All rights reserved.
+//
+
+#import "HBTalkData.h"
+#import "WeqiaAppDelegate.h"
+#import "ObjUrlData.h"
+#import "TalkData.h"
+#import "NSImageUtil.h"
+#import "HBHttpServer.h"
+@class TalkData;
+@implementation HBTalkData
+@synthesize fromSelf,contents=_contents,timeInterval,contentType,dataStatu=_dataStatu,reachStatu=_dataReachStatu,postTo;
+
+-(void) upLoadData:(void(^)(BOOL success ,id backData,HBTalkData*)) complete
+{
+    [self upLoadData:nil complete:complete];
+}
+-(void) downLoadData:(void(^)(BOOL success ,id backData,HBTalkData*)) complete
+{
+    [self downLoadData:nil complete:complete];
+}
+-(void) downLoadData:(void(^)(NSUInteger,long long,HBTalkData*))process complete:(void(^)(BOOL,id,HBTalkData*))complete
+{
+    _downLoadComplete=complete;
+    _downLoadProcess=process;
+}
+
+
+#pragma -mark 上传内容
+-(void) upLoadData:(void(^)(NSUInteger,long long,HBTalkData*))process complete:(void (^)(BOOL, id,HBTalkData*))complete
+{
+    _upLoadComplete=complete;
+    _upLoadProcess=process;
+    if(self.contentType==HBTalkDataContentTypeText&&[self.contents isKindOfClass:[NSString class]])
+    {
+        NSDictionary *msgDic = [self toDictionary];
+        NSString* msgStr = [msgDic JSONString];
+        ServiceParam *param = [[ServiceParam alloc] initWithMid:[WeqiaAppDelegate App].mid withItype:TALK withRequestTag:self.timeInterval.intValue];
+        [param put:@"userId" withValue:[WeqiaAppDelegate App].mid];
+        [param put:@"toMan" withValue:self.postTo];
+        [param put:@"content" withValue:msgStr];
+        [[UserService sharedInstance] getDataFromServer:nil withParam:param withDelegate:self];
+    }else if(self.contentType==HBTalkDataContentTypeImage&&[self.contents isKindOfClass:[UIImage class]])
+    {
+        NSString *mid=[WeqiaAppDelegate App].mid;
+        ServiceParam * param=[[ServiceParam alloc]initWithMid:mid withItype:UPLOAD_USER_PIC withPrevId:nil withNextId:nil withSize:nil withRequestTag:UPLOAD_USER_PIC];
+        NSData* data = UIImageJPEGRepresentation(self.contents,0.5);
+        [param putFile:@"uploadFile" withValue:data];
+        [[UserService sharedInstance]  uploadFileToServer:nil withParam:param withDelegate:self];
+    }
+}
+#pragma -mrak setting 方法
+-(void)setDataStatu:(HBTalkDataStatu)dataStatu1
+{
+    _dataStatu=dataStatu1;
+    [[NSNotificationCenter defaultCenter] postNotificationName:HBTalkDataStatuChangeNotification object:self];
+}
+-(void)setReachStatu:(HBTalkDataReachStatu)reachStatu1
+{
+    _dataReachStatu=reachStatu1;
+    [[NSNotificationCenter defaultCenter] postNotificationName:HBTalkDataReachStatuChangeNotification object:self];
+}
+
+#pragma -mark  接口方法
+-(void)reset
+{
+    _dataReachStatu=HBTalkDataReachStatuNull;
+    _dataStatu=HBTalkDataStatuNormal;
+    self.contents=nil;
+    self.timeInterval=nil;
+    self.contentType=HBTalkDataContentTypeText;
+}
+#pragma -mark 事件响应方法
+-(void) uploadFinish
+{
+}
+
+-(void) downloadFinish
+{
+
+}
+
+-(void) onResult:(ASIHTTPRequest*) request withData:(ResultEx *)data
+{
+    if (request.tag!=UPLOAD_USER_PIC) {
+        NSString *tlIdStr = [data.object JSONString];
+        TalkData *tmpData =(TalkData*)self;
+        if ([NSStrUtil notEmptyOrNull:tlIdStr]) {
+            NSDictionary *tlIdDic = [tlIdStr objectFromJSONString];
+            if (tlIdDic != nil) {
+                NSString *tlId = [tlIdDic objectForKey:@"sendNo"];
+                if ([NSStrUtil notEmptyOrNull:tlId]) {
+                    tmpData.id = tlId;
+                    tmpData.friend_id = tmpData.me_id;
+                    tmpData.me_id=[WeqiaAppDelegate App].mid;
+                    tmpData.who=@"0";
+                    [[WeqiaAppDelegate App].dbUtil insertToDB:tmpData];
+                    tmpData = nil;
+                    self.dataStatu=HBTalkDataStatuNormal;
+                    if(self.contentType==HBTalkDataContentTypeImage){
+                        if([((TalkData*)self).content length]>0){
+                            NSMutableString *Url=[NSMutableString string ];
+                            Url=[NSMutableString stringWithString:((TalkData*)self).content];
+                            [Url appendFormat:@"&td=%d",THUMB_TALK_SMALL_1];
+                            [[HBHttpServer shareIntance] getMemoryCacheImage:Url withIndirectUrl:Url
+                                                                    complete:^(UIImage * image) {
+                                self.contents=((TalkData*)self).content;
+                                self.dataStatu=HBTalkDataStatuShouldDownLoad;
+                            }];
+                        }
+                    }
+                }
+            }
+        }
+    } else if(request.tag==UPLOAD_USER_PIC) {
+        ObjUrlData *obj= (ObjUrlData*)[data getDataObject:[ObjUrlData class]];
+        if(obj != nil) {
+            if([self.contents isKindOfClass:[UIImage class]])
+                self.contents=@"";
+            ((TalkData*)self).content=obj.url;
+            NSDictionary *msgDic = [self toDictionary];
+            NSString* msgStr = [msgDic JSONString];
+            ServiceParam *param = [[ServiceParam alloc] initWithMid:[WeqiaAppDelegate App].mid withItype:TALK withRequestTag:self.timeInterval.intValue];
+            [param put:@"userId" withValue:[WeqiaAppDelegate App].mid];
+            [param put:@"toMan" withValue:self.postTo];
+            [param put:@"content" withValue:msgStr];
+            [[UserService sharedInstance] getDataFromServer:nil withParam:param withDelegate:self];
+        }
+    }
+}
+-(void) onError:(ASIHTTPRequest*) request withCode:(NSInteger) errCode
+{
+    self.dataStatu=HBTalkDataStatuUpLoadFailed;
+    TalkData * tmpData=(TalkData*)self;
+    tmpData.send_status=@"0";
+    tmpData.friend_id = tmpData.me_id;
+    tmpData.me_id=[WeqiaAppDelegate App].mid;
+    tmpData.who=@"0";
+    tmpData.id=tmpData.timeInterval;
+    [[WeqiaAppDelegate App].dbUtil insertToDB:tmpData];
+}
+
+
+@end

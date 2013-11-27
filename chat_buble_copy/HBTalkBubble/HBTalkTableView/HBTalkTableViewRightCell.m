@@ -1,0 +1,75 @@
+//
+//  HBTalkTableViewRightCell.m
+//  MyTest
+//
+//  Created by weqia on 13-8-10.
+//  Copyright (c) 2013年 weqia. All rights reserved.
+//
+
+#import "HBTalkTableViewRightCell.h"
+
+@implementation HBTalkTableViewRightCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+        _mLogo.frame=CGRectMake(270, 10, 40, 40);
+        _backView.frame=CGRectMake(250, 0, 35, 30);
+        _content.frame=CGRectMake(10, 5, 10, 10);
+        UIImage* image=[UIImage imageNamed:@"SenderTextNodeBkg.png"];
+        image=[image stretchableImageWithLeftCapWidth:30 topCapHeight:30];
+        _backView.image=image;
+
+    }
+    return self;
+}
+
+#pragma -mark 私有方法
+
+-(void)removeIndicator
+{
+    [indicator stopAnimating];
+    [indicator performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:3];
+}
+
+-(void)clear
+{
+    [super clear];
+    if(indicator)
+        [indicator removeFromSuperview];
+    indicator=nil;
+    _backView.frame=CGRectMake(250, 0, 35, 30);
+    _content.frame=CGRectMake(10, 5, 10, 10);
+}
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    CGRect frame=_backView.frame;
+    frame.origin.x=265-frame.size.width;
+    _backView.frame=frame;
+}
+-(void)statuChange:(NSNotification*) data
+{
+    HBTalkData * talk=[data object];
+    if(self.talkData==talk)
+    {
+        if(talk.dataStatu==HBTalkDataStatuUpLoadFailed){
+            [indicator removeFromSuperview];
+            CGRect rect=_backView.frame;
+            UIButton * button=[UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame=CGRectMake(rect.origin.x-30,  (rect.origin.y+(rect.origin.y+rect.size.height-30)/2), 25,25);
+            [button setImage:[UIImage imageNamed:@"msg_state_fail_resend.png"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"msg_state_fail_resend_pressed.png"] forState:UIControlStateHighlighted];
+            [_cellContent addSubview:button];
+            [button addTarget:self action:@selector(upLoadContent:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else{
+            [self removeIndicator];
+        }
+    }
+}
+
+@end

@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/weqia/!svn/ver/2193/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView
+END
+HBTalkTableViewTextLeftCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/weqia/!svn/ver/2292/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewTextLeftCell.m
+END
+HBTalkTableViewTextRightCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/weqia/!svn/ver/2380/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewTextRightCell.m
+END
+HBActivityIndicatorView.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/weqia/!svn/ver/2193/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBActivityIndicatorView.h
+END
+IconMatch.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/weqia/!svn/ver/2193/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/IconMatch.h
+END
+HBTalkTableViewCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/weqia/!svn/ver/2380/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewCell.h
+END
+HBActivityIndicatorView.m
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/weqia/!svn/ver/2277/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBActivityIndicatorView.m
+END
+HBTalkData.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/weqia/!svn/ver/2380/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkData.h
+END
+HBTalkTableViewImageRightCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/weqia/!svn/ver/2290/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewImageRightCell.h
+END
+HBTalkTableViewRightCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/weqia/!svn/ver/2277/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewRightCell.h
+END
+IconMatch.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/weqia/!svn/ver/2193/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/IconMatch.m
+END
+HBTalkTableViewCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/weqia/!svn/ver/2374/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewCell.m
+END
+HBTalkData.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/weqia/!svn/ver/2380/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkData.m
+END
+HBTalkTableViewImageRightCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/weqia/!svn/ver/2380/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewImageRightCell.m
+END
+HBTalkTableViewLeftCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/weqia/!svn/ver/2277/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewLeftCell.h
+END
+HBTalkTableViewRightCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/weqia/!svn/ver/2292/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewRightCell.m
+END
+HBTalkTableViewImageLeftCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/weqia/!svn/ver/2290/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewImageLeftCell.h
+END
+HBLabel.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/weqia/!svn/ver/2290/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBLabel.h
+END
+HBTalkTableViewLeftCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/weqia/!svn/ver/2367/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewLeftCell.m
+END
+HBTalkTableViewImageLeftCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/weqia/!svn/ver/2380/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewImageLeftCell.m
+END
+HBLabel.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/weqia/!svn/ver/2290/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBLabel.m
+END
+HBTalkTableViewTextLeftCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/weqia/!svn/ver/2193/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewTextLeftCell.h
+END
+HBTalkTableViewTextRightCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/weqia/!svn/ver/2193/ios/trunk/wq/wq/classes/modules/talk/chat/HBTalkTableView/HBTalkTableViewTextRightCell.h
+END
