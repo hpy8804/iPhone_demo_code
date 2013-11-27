@@ -1,0 +1,1620 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>BaiduPCSClient</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<meta name="xcode-display" content="render">
+<style><!--
+.toc_contents_text {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+ul.tocSubEntryList li.tocSubEntry {
+    list-style: none;
+}
+
+#colorbox {
+		display: none;
+}
+.spec_sheet_line {
+		margin-bottom: 1px;
+}
+.collapsible {
+		display: none;
+}
+.toc_leadspace {
+		width: 10; min-width: 10;
+}
+.disclosure_triangle_td {
+		width: 14; min-width: 14;
+		font-size: 10px;
+		vertical-align: middle;
+}
+.specbox td {
+		font-size: 13px;
+}
+.specbox td a {
+		font-size: 13px;
+}
+.specbox td code {
+		font-size: 13px;
+}
+.specbox td tt {
+		font-size: 13px;
+}
+.specbox td pre {
+		font-size: 13px;
+}
+.specbox a {
+		font-size: 12px;
+}
+.disclosure_triangle_td a:hover {
+		text-decoration: none;
+}
+.disclosure_triangle_td a:hover {
+		text-decoration: none;
+}
+.hd_toc_box {
+		padding-top: 10px;
+		padding-right: 15px;
+}.tocSeparator {
+		margin-top: 15px;
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+}
+.tocSubEntryList {
+		margin-left: 0px;
+		padding-left: 40px;
+		padding-top: 0px;
+		margin-top: 2px;
+		padding-bottom: 0px;
+		margin-bottom: 8px;
+}
+.hd_toc_heading_table {
+		margin-top: 2px;
+		margin-bottom: 2px;
+}
+.hd_toc_entry_table {
+		margin-top: 2px;
+		margin-bottom: 2px;
+}
+.tocSubEntry {
+		margin-left: 0px;
+		padding-left: 0px;
+		margin-top: 0px;
+		margin-bottom: 1px;
+}
+.tocSubEntry a {
+		font-size: 10pt;
+}
+.tocSubheading {
+		padding-left: 14px;
+		margin-left: 0px;
+		margin-top: 5px;
+		padding-top: 0px;
+		font-size: 16px;
+		color: #808080;
+}
+
+#tocMenu {
+		border-right: 1px solid #c0c0c0;
+		background-color: #f4f4ff;
+		top:0px;
+		left:0px;
+		width:230px;
+		height:100%;
+}
+#bodyContents {
+		width: auto;
+		padding-left: 15px;
+}
+--></style>
+<script language="JavaScript" type="text/javascript"><!--
+function getNewHTTPObject()
+{
+        var xmlhttp;
+
+        /** Special IE only code ... */
+        /*@cc_on
+          @if (@_jscript_version >= 5)
+              try
+              {
+                  xmlhttp = new ActiveXObject('Msxml2.XMLHTTP');
+              }
+              catch (e)
+              {
+                  try
+                  {
+                      xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+                  }
+                  catch (E)
+                  {
+                      xmlhttp = false;
+                  }
+             }
+          @else
+             xmlhttp = false;
+        @end @*/
+
+        /** Every other browser on the planet */
+        if (!xmlhttp && typeof XMLHttpRequest != 'undefined')
+        {
+            try
+            {
+                xmlhttp = new XMLHttpRequest();
+            }
+            catch (e)
+            {
+                xmlhttp = false;
+            }
+        }
+
+        return xmlhttp;
+}
+
+function hidetoc() {
+	var toc = document.getElementById('tocMenu');
+	var src = toc.getAttribute('src');
+	var xhr = getNewHTTPObject();
+	xhr.open('GET', src, true);
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4) {
+			var toc = document.getElementById('tocMenu');
+			toc.innerHTML = xhr.responseText;
+		}
+	}
+	xhr.send(null);
+	var origURL = parent.document.URL;
+	var contentURL = origURL.substring(origURL.indexOf('?')+1, origURL.length);
+	if (contentURL.length == origURL.length) {
+		jumpPos = origURL.substring(origURL.indexOf('#')+1, origURL.length);
+	}
+	if (contentURL == "hidetoc") {
+		var body = document.getElementById('bodyContents');
+		if (toc && body) {
+			toc.style.display = 'none';
+			body.style.marginLeft = '0px';
+		}
+	}
+}
+
+function disclosure_triangle(elt) {
+   var linkelt = elt;
+   while (elt && elt.tagName != 'TABLE') { elt = elt.parentNode;}
+   if (!elt) { return; }
+   while (elt && elt.tagName != 'DIV') { elt = elt.nextSibling;}
+   if (!elt) { return; }
+   if (parseInt(linkelt.getAttribute('state'))) {
+      // It's open.  Close it
+      linkelt.innerHTML = '&#x25B7;';
+      linkelt.setAttribute('state', 0);
+      linkelt.setAttribute('class', 'closed_disclosure_triangle');
+      elt.style.display = 'none';
+   } else {
+      // It's closed.  Open it
+      linkelt.innerHTML = '&#x25BC;';
+      linkelt.setAttribute('state', 1);
+      linkelt.setAttribute('class', 'open_disclosure_triangle');
+      elt.style.display = 'block';
+   }
+}
+--></script><style type="text/css"><!--.char {background: #ffffff; color:#0000ff;}.comment {background:#ffffff; color:#236e25}.function {background:#ffffff; color:#000000;}.keyword {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.param {background:#ffffff; color:#000000;}.preprocessor {background:#ffffff; color:#236e25}.string {background: #ffffff; color:#891315;}.template {background:#ffffff; color:#761550;}.type {background:#ffffff; color:#761550;}.var {background:#ffffff; color:#000000;}div {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}td {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}span.hd_tocAccessSpace { display: block; font-size: 1px; height: 3px; min-height: 3px; }span.hd_tocGroupSpace { display: block; font-size: 1px; height: 3px; min-height: 3px; }span.hd_tocGroup { display: block; font-weight: bold; font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000; margin-left: 0px; padding-left: 40px; }span.hd_tocGroup + span.hd_tocAccess { padding-top: 5px; }td.toc_contents_text {font-size: 11pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000; }li.tocSubEntry {font-size: 11pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}p {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}h2.h2tight { margin-top: 0px; padding-top: 0px; }h1 { margin-top: 13px; padding-top: 0px; }h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}h5 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10.1pt; font-weight: bold;}pre {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666; font-size: 10pt;}pre a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}pre a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}code a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}code a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}tt a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}tt a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}body  {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt; padding-left: 0px; padding-top: 0px; margin-left: 0px; margin-top: 0px; border: none; }#hd_outermost_table { margin-left: 0px; border-spacing: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; }#hd_outermost_table > tbody > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tbody > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-top: 3px; }.afterName { display: none; }.list_indent { margin-left: 40px; }.declaration_indent { margin-left: 40px; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; min-height: 12px; vertical-align: middle; }.declaration_indent pre { margin-top: 20px; padding-top: 0px; margin-bottom: 20px; padding-bottom: 0px; }.gapBeforeFooter { display: none; }hr { height: 0px; min-height: 0px; border-top: none; border-left: none; border-right: none; border-bottom: 1px solid #909090;}hr.afterHeader { display: none }.param_group_indent { margin-left: 25px; }.param_indent { margin-left: 40px; margin-top: 0px; padding-top: 0px; }.param_indent dl { margin-top: 4px; padding-top: 0px; }dl dd > p:first-child { margin-top: 2px; padding-top: 0px; }.param_indent dl dd > p:first-child { margin-top: 2px; padding-top: 0px; }.group_indent { margin-left: 40px; }.group_desc_indent { margin-left: 20px; }.warning_indent { margin-left: 40px; }.important_indent { margin-left: 40px; }.note_indent { margin-left: 40px; }h3 {       color: #3C4C6C;}.tight {       margin-top: 2px; margin-bottom: 0px;       padding-top: 0px; padding-bottom: 0px;}h3 a {       color: #3C4C6C;	font-size: 16px;	font-style: normal;	font-variant: normal;	font-weight: bold;	height: 0px;	line-height: normal;}.hd_tocAccess { display: block; margin-left: 40px; font-style: italic; font-size: 10px; font-weight: normal; color: #303030; }.tocSubheading { margin-bottom: 4px; }--></style>
+</head>
+<body bgcolor="#ffffff" onload="hidetoc();">
+<!-- headerDoc=cl; uid=//apple_ref/occ/cl/BaiduPCSClient;  name=BaiduPCSClient-->
+<a name="//apple_ref/occ/cl/BaiduPCSClient"></a><table id="hd_outermost_table" height="100%" width="100%"><tr>
+<td valign="top" id="tocMenu" src="toc.html"></td>
+<td id="bodyContents" valign="top">
+<a name="top"></a>
+<h1><a name="BaiduPCSClient">BaiduPCSClient</a></h1>
+<div class="spec_sheet_info_box"><table cellspacing="0" class="specbox">
+<tr>
+<td scope="row"><b>Superclass:</b></td>
+<td><div style="margin-bottom:1px"><div class="content_text">
+<!-- a logicalPath="//apple_ref/occ/cl/NSObject" machineGenerated="true" -->NSObject<!-- /a -->
+</div></div></td>
+</tr>
+<tr>
+<td scope="row"><b>Declared In:</b></td>
+<td><div style="margin-bottom:1px"><div class="content_text"><a logicalpath="//apple_ref/doc/header/BaiduPCSClient.h" target="_top" machinegenerated="true" href="../../index.html#//apple_ref/doc/header/BaiduPCSClient.h">BaiduPCSClient.h</a></div></div></td>
+</tr>
+</table></div>
+<h2>Introduction</h2>
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/cl/BaiduPCSClient;name=start --><!-- begin abstract --></p>
+<p>the base class to call pcs api
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/cl/BaiduPCSClient;name=end --></p>
+<hr class="afterClassOrHeaderInfo">
+<br><a name="HeaderDoc_methods"></a>
+<h2 class="h2tight">Methods</h2>
+<dl>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:" target="_top">-addCloudDownloadTask:target:</a></tt></dt>
+<dd><p>add a cloud download task
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/audioStream" target="_top">-audioStream</a></tt></dt>
+<dd><p>Get the list of all the audio files by stream. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:" target="_top">-audioStreamWithLimit:end:</a></tt></dt>
+<dd><p>Get the list of the audio files by stream with num limit.You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/cancelTask:" target="_top">-cancelTask:</a></tt></dt>
+<dd><p>cancel a cloud download task
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/copy:" target="_top">-copy:</a></tt></dt>
+<dd><p>the method to copy files
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/copy:to:" target="_top">-copy:to:</a></tt></dt>
+<dd><p>the method to copy a singe file
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/deleteFile:" target="_top">-deleteFile:</a></tt></dt>
+<dd><p>the method to delete a single file
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:" target="_top">-deleteFiles:</a></tt></dt>
+<dd><p>the method to delete files
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/diff" target="_top">-diff</a></tt></dt>
+<dd><p>cursor set to 'null'.Diff provides a way to keep up with the latest changes of user files.In the initial call, this method should be called.There is 10 seconds delay, if a file was just modified in the server, the update info is returned only if call this API after 10 seconds
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/diff:" target="_top">-diff:</a></tt></dt>
+<dd><p>Diff provides a way to keep up with the latest changes of user files.
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/docStream" target="_top">-docStream</a></tt></dt>
+<dd><p>Get the list of all the documents files by stream. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:" target="_top">-docStreamWithLimit:end:</a></tt></dt>
+<dd><p>Get the list of the documents files by stream with num limit.You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:" target="_top">-downloadFile:target:</a></tt></dt>
+<dd><p>the method to download a file without listener
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:listener:" target="_top">-downloadFile:target:listener:</a></tt></dt>
+<dd><p>the method to download a file with listener
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:" target="_top">-downloadFileAsMP4360P:target:</a></tt></dt>
+<dd><p>Download  a 360P mp4 file without listener. from PCS to local path without listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:" target="_top">-downloadFileAsMP4360P:target:listener:</a></tt></dt>
+<dd><p>Download  a 360P mp4 file with listener. from PCS to local path without listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:" target="_top">-downloadFileAsMP4480P:target:</a></tt></dt>
+<dd><p>Download  a 480P mp4 file. from PCS to local path without listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:" target="_top">-downloadFileAsMP4480P:target:listener:</a></tt></dt>
+<dd><p>Download  a 480P mp4 file with listener. from PCS to local path without listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:" target="_top">-downloadFileAsSpecificCodecType:target:type:</a></tt></dt>
+<dd><p>Download a file with codec type without listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:" target="_top">-downloadFileAsSpecificCodecType:target:type:listener:</a></tt></dt>
+<dd><p>Download a file with codec type with listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:" target="_top">-downloadFileFromStream:target:</a></tt></dt>
+<dd><p>Stream Download a file from PCS to local path without listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:" target="_top">-downloadFileFromStream:target:listener:</a></tt></dt>
+<dd><p>Stream Download a file from PCS to local path with listener. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/getTaskList" target="_top">-getTaskList</a></tt></dt>
+<dd><p>get the task list
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:" target="_top">-getTaskList:limit:</a></tt></dt>
+<dd><p>get the task list
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/imageStream" target="_top">-imageStream</a></tt></dt>
+<dd><p>Get the list of all the image files by stream. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:" target="_top">-imageStreamWithLimit:end:</a></tt></dt>
+<dd><p>Get the list of the image files by stream with num limit.You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/init" target="_top">-init</a></tt></dt>
+<dd><p>init
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:" target="_top">-initWithAccessToken:</a></tt></dt>
+<dd><p>init with access token
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/list:by:order:" target="_top">-list:by:order:</a></tt></dt>
+<dd><p>the method to get the list of files
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/makeDir:" target="_top">-makeDir:</a></tt></dt>
+<dd><p>the method to create folder
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/meta:" target="_top">-meta:</a></tt></dt>
+<dd><p>the method to get the meta
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/move:" target="_top">-move:</a></tt></dt>
+<dd><p>the method to move files
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/move:to:" target="_top">-move:to:</a></tt></dt>
+<dd><p>the method to move a singe file
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:" target="_top">-queryTaskInfo:</a></tt></dt>
+<dd><p>query the info of a task
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:" target="_top">-queryTaskProgress:</a></tt></dt>
+<dd><p>query the progress of a task
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:" target="_top">-queryTasksInfo:</a></tt></dt>
+<dd><p>query the info of sevral tasks
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:" target="_top">-queryTasksProgress:</a></tt></dt>
+<dd><p>query the progress of sevral tasks
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/quotaInfo" target="_top">-quotaInfo</a></tt></dt>
+<dd><p>the method to call quota api
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:" target="_top">-rapidUpload:target:</a></tt></dt>
+<dd><p>rapid upload
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/search:key:" target="_top">-search:key:</a></tt></dt>
+<dd><p>the method to search
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/search:key:recursive:" target="_top">-search:key:recursive:</a></tt></dt>
+<dd><p>the method to search
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:" target="_top">-streamWithSpecificMediaType:</a></tt></dt>
+<dd><p>Get the list of all the specialized files by stream.You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:start:end:" target="_top">-streamWithSpecificMediaType:start:end:</a></tt></dt>
+<dd><p>Get the list of the specialized files by stream with num limit.You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:" target="_top">-thumbnail:quality:width:height:</a></tt></dt>
+<dd><p>Generate a thumbnail of a image.
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:" target="_top">-uploadData:target:</a></tt></dt>
+<dd><p>the method to upload data without listener
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:" target="_top">-uploadData:target:listener:</a></tt></dt>
+<dd><p>the method to upload data with listener
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/videoStream" target="_top">-videoStream</a></tt></dt>
+<dd><p>Get the list of all the video files by stream. You should apply for special permission to use this method
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:" target="_top">-videoStreamWithLimit:end:</a></tt></dt>
+<dd><p>Get the list of the video files by stream with num limit.You should apply for special permission to use this method
+</p></dd>
+</dl>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:;   name=BaiduPCSClient::addCloudDownloadTask:target: --><a name="//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:"></a>
+<h3><a name="addCloudDownloadTask:target:">addCloudDownloadTask:target:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:;name=start --><!-- begin abstract --></p>
+<p>add a cloud download task
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSAddCloudDownloadTaskResponse/index.html#//apple_ref/occ/cl/PCSAddCloudDownloadTaskResponse" logicalPath="//apple_ref/occ/cl/PCSAddCloudDownloadTaskResponse" target="_top"><span class="type">PCSAddCloudDownloadTaskResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask" target="_top"><span class="function">addCloudDownloadTask</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/addCloudDownloadTask:target:/sourceUrl" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/sourceUrl //apple_ref/occ/clm/BaiduPCSClient/sourceUrl //apple_ref/occ/intfcm/BaiduPCSClient/sourceUrl //apple_ref/occ/intfm/BaiduPCSClient/sourceUrl //apple_ref/occ/func/sourceUrl //apple_ref/occ/ftmplt/BaiduPCSClient/sourceUrl //apple_ref/occ/defn/sourceUrl //apple_ref/occ/macro/sourceUrl //apple_ref/doc/anysymbol/sourceUrl" target="_top"><span class="function">sourceUrl</span></a> :(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/target //apple_ref/occ/data/BaiduPCSClient/target //apple_ref/occ/data/target //apple_ref/occ/clconst/BaiduPCSClient/target " machineGenerated="true" --><span class="var">target</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/addCloudDownloadTask:target:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/addCloudDownloadTask:target:/sourceUrl;   name=addCloudDownloadTask:target:::sourceUrl -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/addCloudDownloadTask:target:/sourceUrl"></a>
+<code>sourceUrl</code>
+</dt>
+<dd><p>the source which want to download</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/addCloudDownloadTask:target:/target;   name=addCloudDownloadTask:target:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/addCloudDownloadTask:target:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the path which used to save the source</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/audioStream;   name=BaiduPCSClient::audioStream --><a name="//apple_ref/occ/instm/BaiduPCSClient/audioStream"></a>
+<h3><a name="audioStream">audioStream</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStream;name=start --><!-- begin abstract --></p>
+<p>Get the list of all the audio files by stream. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStream;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStream;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/audioStream //apple_ref/occ/data/BaiduPCSClient/audioStream //apple_ref/occ/data/audioStream //apple_ref/occ/clconst/BaiduPCSClient/audioStream " machineGenerated="true" --><span class="var">audioStream</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStream;name=end --></pre>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:;   name=BaiduPCSClient::audioStreamWithLimit:end: --><a name="//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:"></a>
+<h3><a name="audioStreamWithLimit:end:">audioStreamWithLimit:end:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:;name=start --><!-- begin abstract --></p>
+<p>Get the list of the audio files by stream with num limit.You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit" target="_top"><span class="function">audioStreamWithLimit</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/start //apple_ref/occ/clm/BaiduPCSClient/start //apple_ref/occ/intfcm/BaiduPCSClient/start //apple_ref/occ/intfm/BaiduPCSClient/start //apple_ref/occ/func/start //apple_ref/occ/ftmplt/BaiduPCSClient/start //apple_ref/occ/defn/start //apple_ref/occ/macro/start //apple_ref/doc/anysymbol/start" target="_top"><span class="function">start</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/end //apple_ref/occ/data/BaiduPCSClient/end //apple_ref/occ/data/end //apple_ref/occ/clconst/BaiduPCSClient/end " machineGenerated="true" --><span class="var">end</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/audioStreamWithLimit:end:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/audioStreamWithLimit:end:/start;   name=audioStreamWithLimit:end:::start -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/audioStreamWithLimit:end:/start"></a>
+<code>start</code>
+</dt>
+<dd><p>The start num of the file to list.if start &lt; 0, start from 0</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/audioStreamWithLimit:end:/end;   name=audioStreamWithLimit:end:::end -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/audioStreamWithLimit:end:/end"></a>
+<code>end</code>
+</dt>
+<dd><p>The end num of the file to list.if end &lt; 0, there is no end</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/cancelTask:;   name=BaiduPCSClient::cancelTask: --><a name="//apple_ref/occ/instm/BaiduPCSClient/cancelTask:"></a>
+<h3><a name="cancelTask:">cancelTask:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/cancelTask:;name=start --><!-- begin abstract --></p>
+<p>cancel a cloud download task
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/cancelTask:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/cancelTask:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/cancelTask:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/cancelTask" target="_top"><span class="function">cancelTask</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/taskId //apple_ref/occ/data/BaiduPCSClient/taskId //apple_ref/occ/data/taskId //apple_ref/occ/clconst/BaiduPCSClient/taskId " machineGenerated="true" --><span class="var">taskId</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/cancelTask:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/cancelTask:/taskId;   name=cancelTask:::taskId -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/cancelTask:/taskId"></a>
+<code>taskId</code>
+</dt>
+<dd><p>the id of a task which want to cancel</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/copy:;   name=BaiduPCSClient::copy: --><a name="//apple_ref/occ/instm/BaiduPCSClient/copy:"></a>
+<h3><a name="copy:">copy:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:;name=start --><!-- begin abstract --></p>
+<p>the method to copy files
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileFromToResponse/index.html#//apple_ref/occ/cl/PCSFileFromToResponse" logicalPath="//apple_ref/occ/cl/PCSFileFromToResponse" target="_top"><span class="type">PCSFileFromToResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/copy:to:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/copy" target="_top"><span class="function">copy</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/intf/NSArray //apple_ref/doc/anysymbol/NSArray" machineGenerated="true" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/files //apple_ref/occ/data/BaiduPCSClient/files //apple_ref/occ/data/files //apple_ref/occ/clconst/BaiduPCSClient/files " machineGenerated="true" --><span class="var">files</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/copy:/files;   name=copy:::files -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/copy:/files"></a>
+<code>files</code>
+</dt>
+<dd><p>the array of the PCSFileFromToInfo</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/copy:to:;   name=BaiduPCSClient::copy:to: --><a name="//apple_ref/occ/instm/BaiduPCSClient/copy:to:"></a>
+<h3><a name="copy:to:">copy:to:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:to:;name=start --><!-- begin abstract --></p>
+<p>the method to copy a singe file
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:to:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:to:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileFromToResponse/index.html#//apple_ref/occ/cl/PCSFileFromToResponse" logicalPath="//apple_ref/occ/cl/PCSFileFromToResponse" target="_top"><span class="type">PCSFileFromToResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/copy:to:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/copy" target="_top"><span class="function">copy</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/move:to:/from" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/from //apple_ref/occ/clm/BaiduPCSClient/from //apple_ref/occ/intfcm/BaiduPCSClient/from //apple_ref/occ/intfm/BaiduPCSClient/from //apple_ref/occ/func/from //apple_ref/occ/ftmplt/BaiduPCSClient/from //apple_ref/occ/defn/from //apple_ref/occ/macro/from //apple_ref/doc/anysymbol/from" target="_top"><span class="function">from</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/to //apple_ref/occ/data/BaiduPCSClient/to //apple_ref/occ/data/to //apple_ref/occ/clconst/BaiduPCSClient/to " machineGenerated="true" --><span class="var">to</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/copy:to:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/copy:to:/from;   name=copy:to:::from -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/copy:to:/from"></a>
+<code>from</code>
+</dt>
+<dd><p>the path of the source file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/copy:to:/to;   name=copy:to:::to -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/copy:to:/to"></a>
+<code>to</code>
+</dt>
+<dd><p>the pathe of the target location</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFile:;   name=BaiduPCSClient::deleteFile: --><a name="//apple_ref/occ/instm/BaiduPCSClient/deleteFile:"></a>
+<h3><a name="deleteFile:">deleteFile:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFile:;name=start --><!-- begin abstract --></p>
+<p>the method to delete a single file
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFile:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFile:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/deleteFile" target="_top"><span class="function">deleteFile</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/file //apple_ref/occ/data/BaiduPCSClient/file //apple_ref/occ/data/file //apple_ref/occ/clconst/BaiduPCSClient/file " machineGenerated="true" --><span class="var">file</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFile:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/deleteFile:/file;   name=deleteFile:::file -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/deleteFile:/file"></a>
+<code>file</code>
+</dt>
+<dd><p>the file's path</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:;   name=BaiduPCSClient::deleteFiles: --><a name="//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:"></a>
+<h3><a name="deleteFiles:">deleteFiles:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:;name=start --><!-- begin abstract --></p>
+<p>the method to delete files
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/deleteFiles" target="_top"><span class="function">deleteFiles</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/intf/NSArray //apple_ref/doc/anysymbol/NSArray" machineGenerated="true" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/files //apple_ref/occ/data/BaiduPCSClient/files //apple_ref/occ/data/files //apple_ref/occ/clconst/BaiduPCSClient/files " machineGenerated="true" --><span class="var">files</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/deleteFiles:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/deleteFiles:/file;   name=deleteFiles:::file -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/deleteFiles:/file"></a>
+<code>file</code>
+</dt>
+<dd><p>the array of files' path</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/diff;   name=BaiduPCSClient::diff --><a name="//apple_ref/occ/instm/BaiduPCSClient/diff"></a>
+<h3><a name="diff">diff</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/diff;name=start --><!-- begin abstract --></p>
+<p>cursor set to 'null'.Diff provides a way to keep up with the latest changes of user files.In the initial call, this method should be called.There is 10 seconds delay, if a file was just modified in the server, the update info is returned only if call this API after 10 seconds
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/diff;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/diff;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSDiffResponse/index.html#//apple_ref/occ/cl/PCSDiffResponse" logicalPath="//apple_ref/occ/cl/PCSDiffResponse" target="_top"><span class="type">PCSDiffResponse</span></a><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/diff //apple_ref/occ/data/BaiduPCSClient/diff //apple_ref/occ/data/diff //apple_ref/occ/clconst/BaiduPCSClient/diff " machineGenerated="true" --><span class="var">diff</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/diff;name=end --></pre>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/diff:;   name=BaiduPCSClient::diff: --><a name="//apple_ref/occ/instm/BaiduPCSClient/diff:"></a>
+<h3><a name="diff:">diff:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/diff:;name=start --><!-- begin abstract --></p>
+<p>Diff provides a way to keep up with the latest changes of user files.
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/diff:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/diff:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSDiffResponse/index.html#//apple_ref/occ/cl/PCSDiffResponse" logicalPath="//apple_ref/occ/cl/PCSDiffResponse" target="_top"><span class="type">PCSDiffResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/diff:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/diff" target="_top"><span class="function">diff</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/cursor //apple_ref/occ/data/BaiduPCSClient/cursor //apple_ref/occ/data/cursor //apple_ref/occ/clconst/BaiduPCSClient/cursor " machineGenerated="true" --><span class="var">cursor</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/diff:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/diff:/cursor;   name=diff:::cursor -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/diff:/cursor"></a>
+<code>cursor</code>
+</dt>
+<dd><p>It is used to keep track of your current state.In the initial call, set cursor=null in the request.You can get the next cursor from the response and set it in the next request.</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/docStream;   name=BaiduPCSClient::docStream --><a name="//apple_ref/occ/instm/BaiduPCSClient/docStream"></a>
+<h3><a name="docStream">docStream</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/docStream;name=start --><!-- begin abstract --></p>
+<p>Get the list of all the documents files by stream. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/docStream;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/docStream;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/docStream //apple_ref/occ/data/BaiduPCSClient/docStream //apple_ref/occ/data/docStream //apple_ref/occ/clconst/BaiduPCSClient/docStream " machineGenerated="true" --><span class="var">docStream</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/docStream;name=end --></pre>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:;   name=BaiduPCSClient::docStreamWithLimit:end: --><a name="//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:"></a>
+<h3><a name="docStreamWithLimit:end:">docStreamWithLimit:end:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:;name=start --><!-- begin abstract --></p>
+<p>Get the list of the documents files by stream with num limit.You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit" target="_top"><span class="function">docStreamWithLimit</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/start //apple_ref/occ/clm/BaiduPCSClient/start //apple_ref/occ/intfcm/BaiduPCSClient/start //apple_ref/occ/intfm/BaiduPCSClient/start //apple_ref/occ/func/start //apple_ref/occ/ftmplt/BaiduPCSClient/start //apple_ref/occ/defn/start //apple_ref/occ/macro/start //apple_ref/doc/anysymbol/start" target="_top"><span class="function">start</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/end //apple_ref/occ/data/BaiduPCSClient/end //apple_ref/occ/data/end //apple_ref/occ/clconst/BaiduPCSClient/end " machineGenerated="true" --><span class="var">end</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/docStreamWithLimit:end:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/docStreamWithLimit:end:/start;   name=docStreamWithLimit:end:::start -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/docStreamWithLimit:end:/start"></a>
+<code>start</code>
+</dt>
+<dd><p>The start num of the file to list.if start &lt; 0, start from 0</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/docStreamWithLimit:end:/end;   name=docStreamWithLimit:end:::end -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/docStreamWithLimit:end:/end"></a>
+<code>end</code>
+</dt>
+<dd><p>The end num of the file to list.if end &lt; 0, there is no end</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:;   name=BaiduPCSClient::downloadFile:target: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:"></a>
+<h3><a name="downloadFile:target:">downloadFile:target:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:;name=start --><!-- begin abstract --></p>
+<p>the method to download a file without listener
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFile" target="_top"><span class="function">downloadFile</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/target //apple_ref/occ/data/BaiduPCSClient/target //apple_ref/occ/data/target //apple_ref/occ/clconst/BaiduPCSClient/target " machineGenerated="true" --><span class="var">target</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:/source;   name=downloadFile:target:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:/target;   name=downloadFile:target:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:listener:;   name=BaiduPCSClient::downloadFile:target:listener: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:listener:"></a>
+<h3><a name="downloadFile:target:listener:">downloadFile:target:listener:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:listener:;name=start --><!-- begin abstract --></p>
+<p>the method to download a file with listener
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:listener:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:listener:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFile" target="_top"><span class="function">downloadFile</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/target //apple_ref/occ/clm/BaiduPCSClient/target //apple_ref/occ/intfcm/BaiduPCSClient/target //apple_ref/occ/intfm/BaiduPCSClient/target //apple_ref/occ/func/target //apple_ref/occ/ftmplt/BaiduPCSClient/target //apple_ref/occ/defn/target //apple_ref/occ/macro/target //apple_ref/doc/anysymbol/target" target="_top"><span class="function">target</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/id //apple_ref/occ/tdef/id //apple_ref/occ/tag/id //apple_ref/occ/struct/id //apple_ref/occ/intf/id //apple_ref/doc/anysymbol/id" machineGenerated="true" --><span class="type">id</span><!-- /a -->&lt;<span class="param">BaiduPCSStatusListener</span>&gt;)<!-- a logicalPath="//apple_ref/occ/econst/listener //apple_ref/occ/data/BaiduPCSClient/listener //apple_ref/occ/data/listener //apple_ref/occ/clconst/BaiduPCSClient/listener " machineGenerated="true" --><span class="var">listener</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFile:target:listener:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:listener:/source;   name=downloadFile:target:listener:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:listener:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:listener:/target;   name=downloadFile:target:listener:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:listener:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:listener:/listener;   name=downloadFile:target:listener:::listener -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFile:target:listener:/listener"></a>
+<code>listener</code>
+</dt>
+<dd><p>the listener to observe the action</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:;   name=BaiduPCSClient::downloadFileAsMP4360P:target: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:"></a>
+<h3><a name="downloadFileAsMP4360P:target:">downloadFileAsMP4360P:target:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:;name=start --><!-- begin abstract --></p>
+<p>Download  a 360P mp4 file without listener. from PCS to local path without listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P" target="_top"><span class="function">downloadFileAsMP4360P</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/target //apple_ref/occ/data/BaiduPCSClient/target //apple_ref/occ/data/target //apple_ref/occ/clconst/BaiduPCSClient/target " machineGenerated="true" --><span class="var">target</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:/source;   name=downloadFileAsMP4360P:target:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:/target;   name=downloadFileAsMP4360P:target:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:;   name=BaiduPCSClient::downloadFileAsMP4360P:target:listener: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:"></a>
+<h3><a name="downloadFileAsMP4360P:target:listener:">downloadFileAsMP4360P:target:listener:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:;name=start --><!-- begin abstract --></p>
+<p>Download  a 360P mp4 file with listener. from PCS to local path without listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P" target="_top"><span class="function">downloadFileAsMP4360P</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/target //apple_ref/occ/clm/BaiduPCSClient/target //apple_ref/occ/intfcm/BaiduPCSClient/target //apple_ref/occ/intfm/BaiduPCSClient/target //apple_ref/occ/func/target //apple_ref/occ/ftmplt/BaiduPCSClient/target //apple_ref/occ/defn/target //apple_ref/occ/macro/target //apple_ref/doc/anysymbol/target" target="_top"><span class="function">target</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/id //apple_ref/occ/tdef/id //apple_ref/occ/tag/id //apple_ref/occ/struct/id //apple_ref/occ/intf/id //apple_ref/doc/anysymbol/id" machineGenerated="true" --><span class="type">id</span><!-- /a -->&lt;<span class="param">BaiduPCSStatusListener</span>&gt;)<!-- a logicalPath="//apple_ref/occ/econst/listener //apple_ref/occ/data/BaiduPCSClient/listener //apple_ref/occ/data/listener //apple_ref/occ/clconst/BaiduPCSClient/listener " machineGenerated="true" --><span class="var">listener</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4360P:target:listener:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:listener:/source;   name=downloadFileAsMP4360P:target:listener:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:listener:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:listener:/target;   name=downloadFileAsMP4360P:target:listener:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:listener:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:listener:/listener;   name=downloadFileAsMP4360P:target:listener:::listener -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4360P:target:listener:/listener"></a>
+<code>listener</code>
+</dt>
+<dd><p>the listener to observe the action</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:;   name=BaiduPCSClient::downloadFileAsMP4480P:target: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:"></a>
+<h3><a name="downloadFileAsMP4480P:target:">downloadFileAsMP4480P:target:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:;name=start --><!-- begin abstract --></p>
+<p>Download  a 480P mp4 file. from PCS to local path without listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P" target="_top"><span class="function">downloadFileAsMP4480P</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/target //apple_ref/occ/data/BaiduPCSClient/target //apple_ref/occ/data/target //apple_ref/occ/clconst/BaiduPCSClient/target " machineGenerated="true" --><span class="var">target</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:/source;   name=downloadFileAsMP4480P:target:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:/target;   name=downloadFileAsMP4480P:target:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:;   name=BaiduPCSClient::downloadFileAsMP4480P:target:listener: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:"></a>
+<h3><a name="downloadFileAsMP4480P:target:listener:">downloadFileAsMP4480P:target:listener:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:;name=start --><!-- begin abstract --></p>
+<p>Download  a 480P mp4 file with listener. from PCS to local path without listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P" target="_top"><span class="function">downloadFileAsMP4480P</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/target //apple_ref/occ/clm/BaiduPCSClient/target //apple_ref/occ/intfcm/BaiduPCSClient/target //apple_ref/occ/intfm/BaiduPCSClient/target //apple_ref/occ/func/target //apple_ref/occ/ftmplt/BaiduPCSClient/target //apple_ref/occ/defn/target //apple_ref/occ/macro/target //apple_ref/doc/anysymbol/target" target="_top"><span class="function">target</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/id //apple_ref/occ/tdef/id //apple_ref/occ/tag/id //apple_ref/occ/struct/id //apple_ref/occ/intf/id //apple_ref/doc/anysymbol/id" machineGenerated="true" --><span class="type">id</span><!-- /a -->&lt;<span class="param">BaiduPCSStatusListener</span>&gt;)<!-- a logicalPath="//apple_ref/occ/econst/listener //apple_ref/occ/data/BaiduPCSClient/listener //apple_ref/occ/data/listener //apple_ref/occ/clconst/BaiduPCSClient/listener " machineGenerated="true" --><span class="var">listener</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsMP4480P:target:listener:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:listener:/source;   name=downloadFileAsMP4480P:target:listener:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:listener:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:listener:/target;   name=downloadFileAsMP4480P:target:listener:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:listener:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:listener:/listener;   name=downloadFileAsMP4480P:target:listener:::listener -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsMP4480P:target:listener:/listener"></a>
+<code>listener</code>
+</dt>
+<dd><p>the listener to observe the action</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:;   name=BaiduPCSClient::downloadFileAsSpecificCodecType:target:type: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:"></a>
+<h3><a name="downloadFileAsSpecificCodecType:target:type:">downloadFileAsSpecificCodecType:target:type:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:;name=start --><!-- begin abstract --></p>
+<p>Download a file with codec type without listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType" target="_top"><span class="function">downloadFileAsSpecificCodecType</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/target //apple_ref/occ/clm/BaiduPCSClient/target //apple_ref/occ/intfcm/BaiduPCSClient/target //apple_ref/occ/intfm/BaiduPCSClient/target //apple_ref/occ/func/target //apple_ref/occ/ftmplt/BaiduPCSClient/target //apple_ref/occ/defn/target //apple_ref/occ/macro/target //apple_ref/doc/anysymbol/target" target="_top"><span class="function">target</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/type //apple_ref/occ/data/BaiduPCSClient/type //apple_ref/occ/data/type //apple_ref/occ/clconst/BaiduPCSClient/type " machineGenerated="true" --><span class="var">type</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:/source;   name=downloadFileAsSpecificCodecType:target:type:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:/target;   name=downloadFileAsSpecificCodecType:target:type:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:/type;   name=downloadFileAsSpecificCodecType:target:type:::type -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:/type"></a>
+<code>type</code>
+</dt>
+<dd><p>should be MP4_480P or MP4_360P</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:;   name=BaiduPCSClient::downloadFileAsSpecificCodecType:target:type:listener: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:"></a>
+<h3><a name="downloadFileAsSpecificCodecType:target:type:listener:">downloadFileAsSpecificCodecType:target:type:listener:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:;name=start --><!-- begin abstract --></p>
+<p>Download a file with codec type with listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType" target="_top"><span class="function">downloadFileAsSpecificCodecType</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/target //apple_ref/occ/clm/BaiduPCSClient/target //apple_ref/occ/intfcm/BaiduPCSClient/target //apple_ref/occ/intfm/BaiduPCSClient/target //apple_ref/occ/func/target //apple_ref/occ/ftmplt/BaiduPCSClient/target //apple_ref/occ/defn/target //apple_ref/occ/macro/target //apple_ref/doc/anysymbol/target" target="_top"><span class="function">target</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/type" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/type //apple_ref/occ/clm/BaiduPCSClient/type //apple_ref/occ/intfcm/BaiduPCSClient/type //apple_ref/occ/intfm/BaiduPCSClient/type //apple_ref/occ/func/type //apple_ref/occ/ftmplt/BaiduPCSClient/type //apple_ref/occ/defn/type //apple_ref/occ/macro/type //apple_ref/doc/anysymbol/type" target="_top"><span class="function">type</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/id //apple_ref/occ/tdef/id //apple_ref/occ/tag/id //apple_ref/occ/struct/id //apple_ref/occ/intf/id //apple_ref/doc/anysymbol/id" machineGenerated="true" --><span class="type">id</span><!-- /a -->&lt;<span class="param">BaiduPCSStatusListener</span>&gt;)<!-- a logicalPath="//apple_ref/occ/econst/listener //apple_ref/occ/data/BaiduPCSClient/listener //apple_ref/occ/data/listener //apple_ref/occ/clconst/BaiduPCSClient/listener " machineGenerated="true" --><span class="var">listener</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/source;   name=downloadFileAsSpecificCodecType:target:type:listener:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/target;   name=downloadFileAsSpecificCodecType:target:type:listener:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/type;   name=downloadFileAsSpecificCodecType:target:type:listener:::type -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/type"></a>
+<code>type</code>
+</dt>
+<dd><p>should be MP4_480P or MP4_360P</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/listener;   name=downloadFileAsSpecificCodecType:target:type:listener:::listener -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileAsSpecificCodecType:target:type:listener:/listener"></a>
+<code>listener</code>
+</dt>
+<dd><p>the listener to observe the action</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:;   name=BaiduPCSClient::downloadFileFromStream:target: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:"></a>
+<h3><a name="downloadFileFromStream:target:">downloadFileFromStream:target:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:;name=start --><!-- begin abstract --></p>
+<p>Stream Download a file from PCS to local path without listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream" target="_top"><span class="function">downloadFileFromStream</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/target //apple_ref/occ/data/BaiduPCSClient/target //apple_ref/occ/data/target //apple_ref/occ/clconst/BaiduPCSClient/target " machineGenerated="true" --><span class="var">target</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:/source;   name=downloadFileFromStream:target:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:/target;   name=downloadFileFromStream:target:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:;   name=BaiduPCSClient::downloadFileFromStream:target:listener: --><a name="//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:"></a>
+<h3><a name="downloadFileFromStream:target:listener:">downloadFileFromStream:target:listener:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:;name=start --><!-- begin abstract --></p>
+<p>Stream Download a file from PCS to local path with listener. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSSimplefiedResponse/index.html#//apple_ref/occ/cl/PCSSimplefiedResponse" logicalPath="//apple_ref/occ/cl/PCSSimplefiedResponse" target="_top"><span class="type">PCSSimplefiedResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream" target="_top"><span class="function">downloadFileFromStream</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/target //apple_ref/occ/clm/BaiduPCSClient/target //apple_ref/occ/intfcm/BaiduPCSClient/target //apple_ref/occ/intfm/BaiduPCSClient/target //apple_ref/occ/func/target //apple_ref/occ/ftmplt/BaiduPCSClient/target //apple_ref/occ/defn/target //apple_ref/occ/macro/target //apple_ref/doc/anysymbol/target" target="_top"><span class="function">target</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/id //apple_ref/occ/tdef/id //apple_ref/occ/tag/id //apple_ref/occ/struct/id //apple_ref/occ/intf/id //apple_ref/doc/anysymbol/id" machineGenerated="true" --><span class="type">id</span><!-- /a -->&lt;<span class="param">BaiduPCSStatusListener</span>&gt;)<!-- a logicalPath="//apple_ref/occ/econst/listener //apple_ref/occ/data/BaiduPCSClient/listener //apple_ref/occ/data/listener //apple_ref/occ/clconst/BaiduPCSClient/listener " machineGenerated="true" --><span class="var">listener</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/downloadFileFromStream:target:listener:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:listener:/source;   name=downloadFileFromStream:target:listener:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:listener:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:listener:/target;   name=downloadFileFromStream:target:listener:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:listener:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the data which will store the download file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:listener:/listener;   name=downloadFileFromStream:target:listener:::listener -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/downloadFileFromStream:target:listener:/listener"></a>
+<code>listener</code>
+</dt>
+<dd><p>the listener to observe the action</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList;   name=BaiduPCSClient::getTaskList --><a name="//apple_ref/occ/instm/BaiduPCSClient/getTaskList"></a>
+<h3><a name="getTaskList">getTaskList</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList;name=start --><!-- begin abstract --></p>
+<p>get the task list
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSCloudDownloadTaskResponse/index.html#//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" logicalPath="//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" target="_top"><span class="type">PCSCloudDownloadTaskResponse</span></a> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/getTaskList //apple_ref/occ/data/BaiduPCSClient/getTaskList //apple_ref/occ/data/getTaskList //apple_ref/occ/clconst/BaiduPCSClient/getTaskList " machineGenerated="true" --><span class="var">getTaskList</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:;   name=BaiduPCSClient::getTaskList:limit: --><a name="//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:"></a>
+<h3><a name="getTaskList:limit:">getTaskList:limit:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:;name=start --><!-- begin abstract --></p>
+<p>get the task list
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSCloudDownloadTaskResponse/index.html#//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" logicalPath="//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" target="_top"><span class="type">PCSCloudDownloadTaskResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/getTaskList" target="_top"><span class="function">getTaskList</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/start //apple_ref/occ/clm/BaiduPCSClient/start //apple_ref/occ/intfcm/BaiduPCSClient/start //apple_ref/occ/intfm/BaiduPCSClient/start //apple_ref/occ/func/start //apple_ref/occ/ftmplt/BaiduPCSClient/start //apple_ref/occ/defn/start //apple_ref/occ/macro/start //apple_ref/doc/anysymbol/start" target="_top"><span class="function">start</span></a> :(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/limit //apple_ref/occ/data/BaiduPCSClient/limit //apple_ref/occ/data/limit //apple_ref/occ/clconst/BaiduPCSClient/limit " machineGenerated="true" --><span class="var">limit</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/getTaskList:limit:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/getTaskList:limit:/start;   name=getTaskList:limit:::start -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/getTaskList:limit:/start"></a>
+<code>start</code>
+</dt>
+<dd><p>the start index</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/getTaskList:limit:/limit;   name=getTaskList:limit:::limit -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/getTaskList:limit:/limit"></a>
+<code>limit</code>
+</dt>
+<dd><p>the num of task in return list</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/imageStream;   name=BaiduPCSClient::imageStream --><a name="//apple_ref/occ/instm/BaiduPCSClient/imageStream"></a>
+<h3><a name="imageStream">imageStream</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStream;name=start --><!-- begin abstract --></p>
+<p>Get the list of all the image files by stream. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStream;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStream;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/imageStream //apple_ref/occ/data/BaiduPCSClient/imageStream //apple_ref/occ/data/imageStream //apple_ref/occ/clconst/BaiduPCSClient/imageStream " machineGenerated="true" --><span class="var">imageStream</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStream;name=end --></pre>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:;   name=BaiduPCSClient::imageStreamWithLimit:end: --><a name="//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:"></a>
+<h3><a name="imageStreamWithLimit:end:">imageStreamWithLimit:end:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:;name=start --><!-- begin abstract --></p>
+<p>Get the list of the image files by stream with num limit.You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit" target="_top"><span class="function">imageStreamWithLimit</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/start //apple_ref/occ/clm/BaiduPCSClient/start //apple_ref/occ/intfcm/BaiduPCSClient/start //apple_ref/occ/intfm/BaiduPCSClient/start //apple_ref/occ/func/start //apple_ref/occ/ftmplt/BaiduPCSClient/start //apple_ref/occ/defn/start //apple_ref/occ/macro/start //apple_ref/doc/anysymbol/start" target="_top"><span class="function">start</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/end //apple_ref/occ/data/BaiduPCSClient/end //apple_ref/occ/data/end //apple_ref/occ/clconst/BaiduPCSClient/end " machineGenerated="true" --><span class="var">end</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/imageStreamWithLimit:end:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/imageStreamWithLimit:end:/start;   name=imageStreamWithLimit:end:::start -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/imageStreamWithLimit:end:/start"></a>
+<code>start</code>
+</dt>
+<dd><p>The start num of the file to list.if start &lt; 0, start from 0</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/imageStreamWithLimit:end:/end;   name=imageStreamWithLimit:end:::end -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/imageStreamWithLimit:end:/end"></a>
+<code>end</code>
+</dt>
+<dd><p>The end num of the file to list.if end &lt; 0, there is no end</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/init;   name=BaiduPCSClient::init --><a name="//apple_ref/occ/instm/BaiduPCSClient/init"></a>
+<h3><a name="init">init</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/init;name=start --><!-- begin abstract --></p>
+<p>init
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/init;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/init;name=start -->-(<a machinegenerated="true" href="index.html#//apple_ref/occ/cl/BaiduPCSClient" logicalPath="//apple_ref/occ/cl/BaiduPCSClient" target="_top"><span class="type">BaiduPCSClient</span></a><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/init //apple_ref/occ/data/BaiduPCSClient/init //apple_ref/occ/data/init //apple_ref/occ/clconst/BaiduPCSClient/init " machineGenerated="true" --><span class="var">init</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/init;name=end --></pre>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:;   name=BaiduPCSClient::initWithAccessToken: --><a name="//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:"></a>
+<h3><a name="initWithAccessToken:">initWithAccessToken:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:;name=start --><!-- begin abstract --></p>
+<p>init with access token
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:;name=start -->-(<a machinegenerated="true" href="index.html#//apple_ref/occ/cl/BaiduPCSClient" logicalPath="//apple_ref/occ/cl/BaiduPCSClient" target="_top"><span class="type">BaiduPCSClient</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken" target="_top"><span class="function">initWithAccessToken</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/token //apple_ref/occ/data/BaiduPCSClient/token //apple_ref/occ/data/token //apple_ref/occ/clconst/BaiduPCSClient/token " machineGenerated="true" --><span class="var">token</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/initWithAccessToken:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/initWithAccessToken:/token;   name=initWithAccessToken:::token -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/initWithAccessToken:/token"></a>
+<code>token</code>
+</dt>
+<dd><p>the access token</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/list:by:order:;   name=BaiduPCSClient::list:by:order: --><a name="//apple_ref/occ/instm/BaiduPCSClient/list:by:order:"></a>
+<h3><a name="list:by:order:">list:by:order:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/list:by:order:;name=start --><!-- begin abstract --></p>
+<p>the method to get the list of files
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/list:by:order:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/list:by:order:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/list:by:order:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/list" target="_top"><span class="function">list</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/path" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/path //apple_ref/occ/clm/BaiduPCSClient/path //apple_ref/occ/intfcm/BaiduPCSClient/path //apple_ref/occ/intfm/BaiduPCSClient/path //apple_ref/occ/func/path //apple_ref/occ/ftmplt/BaiduPCSClient/path //apple_ref/occ/defn/path //apple_ref/occ/macro/path //apple_ref/doc/anysymbol/path" target="_top"><span class="function">path</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/list:by:order:/by" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/by //apple_ref/occ/clm/BaiduPCSClient/by //apple_ref/occ/intfcm/BaiduPCSClient/by //apple_ref/occ/intfm/BaiduPCSClient/by //apple_ref/occ/func/by //apple_ref/occ/ftmplt/BaiduPCSClient/by //apple_ref/occ/defn/by //apple_ref/occ/macro/by //apple_ref/doc/anysymbol/by" target="_top"><span class="function">by</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/order //apple_ref/occ/data/BaiduPCSClient/order //apple_ref/occ/data/order //apple_ref/occ/clconst/BaiduPCSClient/order " machineGenerated="true" --><span class="var">order</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/list:by:order:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/list:by:order:/path;   name=list:by:order:::path -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/list:by:order:/path"></a>
+<code>path</code>
+</dt>
+<dd><p>the path</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/list:by:order:/by;   name=list:by:order:::by -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/list:by:order:/by"></a>
+<code>by</code>
+</dt>
+<dd><p>order by what. time or name or size.</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/list:by:order:/order;   name=list:by:order:::order -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/list:by:order:/order"></a>
+<code>order</code>
+</dt>
+<dd><p>asc or desc</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/makeDir:;   name=BaiduPCSClient::makeDir: --><a name="//apple_ref/occ/instm/BaiduPCSClient/makeDir:"></a>
+<h3><a name="makeDir:">makeDir:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/makeDir:;name=start --><!-- begin abstract --></p>
+<p>the method to create folder
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/makeDir:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/makeDir:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileInfoResponse/index.html#//apple_ref/occ/cl/PCSFileInfoResponse" logicalPath="//apple_ref/occ/cl/PCSFileInfoResponse" target="_top"><span class="type">PCSFileInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/makeDir:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/makeDir" target="_top"><span class="function">makeDir</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/path //apple_ref/occ/data/BaiduPCSClient/path //apple_ref/occ/data/path //apple_ref/occ/clconst/BaiduPCSClient/path " machineGenerated="true" --><span class="var">path</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/makeDir:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/makeDir:/path;   name=makeDir:::path -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/makeDir:/path"></a>
+<code>path</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/meta:;   name=BaiduPCSClient::meta: --><a name="//apple_ref/occ/instm/BaiduPCSClient/meta:"></a>
+<h3><a name="meta:">meta:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/meta:;name=start --><!-- begin abstract --></p>
+<p>the method to get the meta
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/meta:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/meta:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSMetaResponse/index.html#//apple_ref/occ/cl/PCSMetaResponse" logicalPath="//apple_ref/occ/cl/PCSMetaResponse" target="_top"><span class="type">PCSMetaResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/meta:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/meta" target="_top"><span class="function">meta</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/file //apple_ref/occ/data/BaiduPCSClient/file //apple_ref/occ/data/file //apple_ref/occ/clconst/BaiduPCSClient/file " machineGenerated="true" --><span class="var">file</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/meta:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/meta:/file;   name=meta:::file -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/meta:/file"></a>
+<code>file</code>
+</dt>
+<dd><p>the path of the file</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/move:;   name=BaiduPCSClient::move: --><a name="//apple_ref/occ/instm/BaiduPCSClient/move:"></a>
+<h3><a name="move:">move:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/move:;name=start --><!-- begin abstract --></p>
+<p>the method to move files
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/move:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/move:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileFromToResponse/index.html#//apple_ref/occ/cl/PCSFileFromToResponse" logicalPath="//apple_ref/occ/cl/PCSFileFromToResponse" target="_top"><span class="type">PCSFileFromToResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/move:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/move" target="_top"><span class="function">move</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/intf/NSArray //apple_ref/doc/anysymbol/NSArray" machineGenerated="true" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/files //apple_ref/occ/data/BaiduPCSClient/files //apple_ref/occ/data/files //apple_ref/occ/clconst/BaiduPCSClient/files " machineGenerated="true" --><span class="var">files</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/move:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/move:/files;   name=move:::files -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/move:/files"></a>
+<code>files</code>
+</dt>
+<dd><p>the array of the PCSFileFromToInfo</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/move:to:;   name=BaiduPCSClient::move:to: --><a name="//apple_ref/occ/instm/BaiduPCSClient/move:to:"></a>
+<h3><a name="move:to:">move:to:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/move:to:;name=start --><!-- begin abstract --></p>
+<p>the method to move a singe file
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/move:to:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/move:to:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileFromToResponse/index.html#//apple_ref/occ/cl/PCSFileFromToResponse" logicalPath="//apple_ref/occ/cl/PCSFileFromToResponse" target="_top"><span class="type">PCSFileFromToResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/move:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/move" target="_top"><span class="function">move</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/move:to:/from" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/from //apple_ref/occ/clm/BaiduPCSClient/from //apple_ref/occ/intfcm/BaiduPCSClient/from //apple_ref/occ/intfm/BaiduPCSClient/from //apple_ref/occ/func/from //apple_ref/occ/ftmplt/BaiduPCSClient/from //apple_ref/occ/defn/from //apple_ref/occ/macro/from //apple_ref/doc/anysymbol/from" target="_top"><span class="function">from</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/to //apple_ref/occ/data/BaiduPCSClient/to //apple_ref/occ/data/to //apple_ref/occ/clconst/BaiduPCSClient/to " machineGenerated="true" --><span class="var">to</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/move:to:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/move:to:/from;   name=move:to:::from -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/move:to:/from"></a>
+<code>from</code>
+</dt>
+<dd><p>the path of the source file</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/move:to:/to;   name=move:to:::to -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/move:to:/to"></a>
+<code>to</code>
+</dt>
+<dd><p>the pathe of the target location</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:;   name=BaiduPCSClient::queryTaskInfo: --><a name="//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:"></a>
+<h3><a name="queryTaskInfo:">queryTaskInfo:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:;name=start --><!-- begin abstract --></p>
+<p>query the info of a task
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSCloudDownloadTaskResponse/index.html#//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" logicalPath="//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" target="_top"><span class="type">PCSCloudDownloadTaskResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo" target="_top"><span class="function">queryTaskInfo</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/taskId //apple_ref/occ/data/BaiduPCSClient/taskId //apple_ref/occ/data/taskId //apple_ref/occ/clconst/BaiduPCSClient/taskId " machineGenerated="true" --><span class="var">taskId</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskInfo:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/queryTaskInfo:/taskId;   name=queryTaskInfo:::taskId -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/queryTaskInfo:/taskId"></a>
+<code>taskId</code>
+</dt>
+<dd><p>the task which want to query</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:;   name=BaiduPCSClient::queryTaskProgress: --><a name="//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:"></a>
+<h3><a name="queryTaskProgress:">queryTaskProgress:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:;name=start --><!-- begin abstract --></p>
+<p>query the progress of a task
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSCloudDownloadTaskProcessResponse/index.html#//apple_ref/occ/cl/PCSCloudDownloadTaskProcessResponse" logicalPath="//apple_ref/occ/cl/PCSCloudDownloadTaskProcessResponse" target="_top"><span class="type">PCSCloudDownloadTaskProcessResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress" target="_top"><span class="function">queryTaskProgress</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/taskId //apple_ref/occ/data/BaiduPCSClient/taskId //apple_ref/occ/data/taskId //apple_ref/occ/clconst/BaiduPCSClient/taskId " machineGenerated="true" --><span class="var">taskId</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTaskProgress:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/queryTaskProgress:/taskId;   name=queryTaskProgress:::taskId -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/queryTaskProgress:/taskId"></a>
+<code>taskId</code>
+</dt>
+<dd><p>the task which want to query</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:;   name=BaiduPCSClient::queryTasksInfo: --><a name="//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:"></a>
+<h3><a name="queryTasksInfo:">queryTasksInfo:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:;name=start --><!-- begin abstract --></p>
+<p>query the info of sevral tasks
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSCloudDownloadTaskResponse/index.html#//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" logicalPath="//apple_ref/occ/cl/PCSCloudDownloadTaskResponse" target="_top"><span class="type">PCSCloudDownloadTaskResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo" target="_top"><span class="function">queryTasksInfo</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/intf/NSArray //apple_ref/doc/anysymbol/NSArray" machineGenerated="true" --><span class="type">NSArray</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/taskIds //apple_ref/occ/data/BaiduPCSClient/taskIds //apple_ref/occ/data/taskIds //apple_ref/occ/clconst/BaiduPCSClient/taskIds " machineGenerated="true" --><span class="var">taskIds</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksInfo:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/queryTasksInfo:/taskIds;   name=queryTasksInfo:::taskIds -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/queryTasksInfo:/taskIds"></a>
+<code>taskIds</code>
+</dt>
+<dd><p>the array of task ids to query</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:;   name=BaiduPCSClient::queryTasksProgress: --><a name="//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:"></a>
+<h3><a name="queryTasksProgress:">queryTasksProgress:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:;name=start --><!-- begin abstract --></p>
+<p>query the progress of sevral tasks
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSCloudDownloadTaskProcessResponse/index.html#//apple_ref/occ/cl/PCSCloudDownloadTaskProcessResponse" logicalPath="//apple_ref/occ/cl/PCSCloudDownloadTaskProcessResponse" target="_top"><span class="type">PCSCloudDownloadTaskProcessResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress" target="_top"><span class="function">queryTasksProgress</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/intf/NSArray //apple_ref/doc/anysymbol/NSArray" machineGenerated="true" --><span class="type">NSArray</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/taskIds //apple_ref/occ/data/BaiduPCSClient/taskIds //apple_ref/occ/data/taskIds //apple_ref/occ/clconst/BaiduPCSClient/taskIds " machineGenerated="true" --><span class="var">taskIds</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/queryTasksProgress:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/queryTasksProgress:/taskIds;   name=queryTasksProgress:::taskIds -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/queryTasksProgress:/taskIds"></a>
+<code>taskIds</code>
+</dt>
+<dd><p>the array of task ids to query</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the respnse of the request
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/quotaInfo;   name=BaiduPCSClient::quotaInfo --><a name="//apple_ref/occ/instm/BaiduPCSClient/quotaInfo"></a>
+<h3><a name="quotaInfo">quotaInfo</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/quotaInfo;name=start --><!-- begin abstract --></p>
+<p>the method to call quota api
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/quotaInfo;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/quotaInfo;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSQuotaResponse/index.html#//apple_ref/occ/cl/PCSQuotaResponse" logicalPath="//apple_ref/occ/cl/PCSQuotaResponse" target="_top"><span class="type">PCSQuotaResponse</span></a><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/quotaInfo //apple_ref/occ/data/BaiduPCSClient/quotaInfo //apple_ref/occ/data/quotaInfo //apple_ref/occ/clconst/BaiduPCSClient/quotaInfo " machineGenerated="true" --><span class="var">quotaInfo</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/quotaInfo;name=end --></pre>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:;   name=BaiduPCSClient::rapidUpload:target: --><a name="//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:"></a>
+<h3><a name="rapidUpload:target:">rapidUpload:target:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:;name=start --><!-- begin abstract --></p>
+<p>rapid upload
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileInfoResponse/index.html#//apple_ref/occ/cl/PCSFileInfoResponse" logicalPath="//apple_ref/occ/cl/PCSFileInfoResponse" target="_top"><span class="type">PCSFileInfoResponse</span></a> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/rapidUpload" target="_top"><span class="function">rapidUpload</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --> <span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a> :(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/target //apple_ref/occ/data/BaiduPCSClient/target //apple_ref/occ/data/target //apple_ref/occ/clconst/BaiduPCSClient/target " machineGenerated="true" --><span class="var">target</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/rapidUpload:target:/source;   name=rapidUpload:target:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/rapidUpload:target:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the data of the file which want to upload</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/rapidUpload:target:/the;   name=rapidUpload:target:::the -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/rapidUpload:target:/the"></a>
+<code>the</code>
+</dt>
+<dd><p>target on server to save the source</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>the response of the request
+
+<!-- end return value --></p>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:;name=start --><p>if the source a user (or someone esle) has been uploaded, you will not need to upload again. and your target path will point to the source on server.
+<!-- headerDoc=discussion;uid=//apple_ref/occ/instm/BaiduPCSClient/rapidUpload:target:;name=end --><!-- end discussion -->
+</p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:;   name=BaiduPCSClient::search:key: --><a name="//apple_ref/occ/instm/BaiduPCSClient/search:key:"></a>
+<h3><a name="search:key:">search:key:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:;name=start --><!-- begin abstract --></p>
+<p>the method to search
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/search:key:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/search" target="_top"><span class="function">search</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/path" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/path //apple_ref/occ/clm/BaiduPCSClient/path //apple_ref/occ/intfcm/BaiduPCSClient/path //apple_ref/occ/intfm/BaiduPCSClient/path //apple_ref/occ/func/path //apple_ref/occ/ftmplt/BaiduPCSClient/path //apple_ref/occ/defn/path //apple_ref/occ/macro/path //apple_ref/doc/anysymbol/path" target="_top"><span class="function">path</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/key //apple_ref/occ/data/BaiduPCSClient/key //apple_ref/occ/data/key //apple_ref/occ/clconst/BaiduPCSClient/key " machineGenerated="true" --><span class="var">key</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/search:key:/path;   name=search:key:::path -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/search:key:/path"></a>
+<code>path</code>
+</dt>
+<dd><p>the path which will search</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/search:key:/key;   name=search:key:::key -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/search:key:/key"></a>
+<code>key</code>
+</dt>
+<dd><p>the key word to search</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:recursive:;   name=BaiduPCSClient::search:key:recursive: --><a name="//apple_ref/occ/instm/BaiduPCSClient/search:key:recursive:"></a>
+<h3><a name="search:key:recursive:">search:key:recursive:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:recursive:;name=start --><!-- begin abstract --></p>
+<p>the method to search
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:recursive:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:recursive:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/search:key:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/search" target="_top"><span class="function">search</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/path" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/path //apple_ref/occ/clm/BaiduPCSClient/path //apple_ref/occ/intfcm/BaiduPCSClient/path //apple_ref/occ/intfm/BaiduPCSClient/path //apple_ref/occ/func/path //apple_ref/occ/ftmplt/BaiduPCSClient/path //apple_ref/occ/defn/path //apple_ref/occ/macro/path //apple_ref/doc/anysymbol/path" target="_top"><span class="function">path</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/search:key:recursive:/key" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/key //apple_ref/occ/clm/BaiduPCSClient/key //apple_ref/occ/intfcm/BaiduPCSClient/key //apple_ref/occ/intfm/BaiduPCSClient/key //apple_ref/occ/func/key //apple_ref/occ/ftmplt/BaiduPCSClient/key //apple_ref/occ/defn/key //apple_ref/occ/macro/key //apple_ref/doc/anysymbol/key" target="_top"><span class="function">key</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/BOOL //apple_ref/occ/tdef/BOOL //apple_ref/occ/tag/BOOL //apple_ref/occ/struct/BOOL //apple_ref/occ/intf/BOOL //apple_ref/doc/anysymbol/BOOL" machineGenerated="true" --><span class="type">BOOL</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/recursive //apple_ref/occ/data/BaiduPCSClient/recursive //apple_ref/occ/data/recursive //apple_ref/occ/clconst/BaiduPCSClient/recursive " machineGenerated="true" --><span class="var">recursive</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/search:key:recursive:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/search:key:recursive:/path;   name=search:key:recursive:::path -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/search:key:recursive:/path"></a>
+<code>path</code>
+</dt>
+<dd><p>the path which will search</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/search:key:recursive:/key;   name=search:key:recursive:::key -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/search:key:recursive:/key"></a>
+<code>key</code>
+</dt>
+<dd><p>the key word to search</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/search:key:recursive:/recursive;   name=search:key:recursive:::recursive -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/search:key:recursive:/recursive"></a>
+<code>recursive</code>
+</dt>
+<dd><p>if or not recur</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:;   name=BaiduPCSClient::streamWithSpecificMediaType: --><a name="//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:"></a>
+<h3><a name="streamWithSpecificMediaType:">streamWithSpecificMediaType:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:;name=start --><!-- begin abstract --></p>
+<p>Get the list of all the specialized files by stream.You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType" target="_top"><span class="function">streamWithSpecificMediaType</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/type //apple_ref/occ/data/BaiduPCSClient/type //apple_ref/occ/data/type //apple_ref/occ/clconst/BaiduPCSClient/type " machineGenerated="true" --><span class="var">type</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:/type;   name=streamWithSpecificMediaType:::type -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:/type"></a>
+<code>type</code>
+</dt>
+<dd><p>should be "image", "audio", "video" or "doc"</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:start:end:;   name=BaiduPCSClient::streamWithSpecificMediaType:start:end: --><a name="//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:start:end:"></a>
+<h3><a name="streamWithSpecificMediaType:start:end:">streamWithSpecificMediaType:start:end:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:start:end:;name=start --><!-- begin abstract --></p>
+<p>Get the list of the specialized files by stream with num limit.You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:start:end:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:start:end:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType" target="_top"><span class="function">streamWithSpecificMediaType</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/type" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/type //apple_ref/occ/clm/BaiduPCSClient/type //apple_ref/occ/intfcm/BaiduPCSClient/type //apple_ref/occ/intfm/BaiduPCSClient/type //apple_ref/occ/func/type //apple_ref/occ/ftmplt/BaiduPCSClient/type //apple_ref/occ/defn/type //apple_ref/occ/macro/type //apple_ref/doc/anysymbol/type" target="_top"><span class="function">type</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/start //apple_ref/occ/clm/BaiduPCSClient/start //apple_ref/occ/intfcm/BaiduPCSClient/start //apple_ref/occ/intfm/BaiduPCSClient/start //apple_ref/occ/func/start //apple_ref/occ/ftmplt/BaiduPCSClient/start //apple_ref/occ/defn/start //apple_ref/occ/macro/start //apple_ref/doc/anysymbol/start" target="_top"><span class="function">start</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/end //apple_ref/occ/data/BaiduPCSClient/end //apple_ref/occ/data/end //apple_ref/occ/clconst/BaiduPCSClient/end " machineGenerated="true" --><span class="var">end</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/streamWithSpecificMediaType:start:end:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/type;   name=streamWithSpecificMediaType:start:end:::type -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/type"></a>
+<code>type</code>
+</dt>
+<dd><p>should be "image", "audio", "video" or "doc"</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/start;   name=streamWithSpecificMediaType:start:end:::start -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/start"></a>
+<code>start</code>
+</dt>
+<dd><p>The start num of the file to list.if start &lt; 0, start from 0</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/end;   name=streamWithSpecificMediaType:start:end:::end -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/streamWithSpecificMediaType:start:end:/end"></a>
+<code>end</code>
+</dt>
+<dd><p>The end num of the file to list.if end &lt; 0, there is no end</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:;   name=BaiduPCSClient::thumbnail:quality:width:height: --><a name="//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:"></a>
+<h3><a name="thumbnail:quality:width:height:">thumbnail:quality:width:height:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:;name=start --><!-- begin abstract --></p>
+<p>Generate a thumbnail of a image.
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSThumbnailResponse/index.html#//apple_ref/occ/cl/PCSThumbnailResponse" logicalPath="//apple_ref/occ/cl/PCSThumbnailResponse" target="_top"><span class="type">PCSThumbnailResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/thumbnail" target="_top"><span class="function">thumbnail</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/path" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/path //apple_ref/occ/clm/BaiduPCSClient/path //apple_ref/occ/intfcm/BaiduPCSClient/path //apple_ref/occ/intfm/BaiduPCSClient/path //apple_ref/occ/func/path //apple_ref/occ/ftmplt/BaiduPCSClient/path //apple_ref/occ/defn/path //apple_ref/occ/macro/path //apple_ref/doc/anysymbol/path" target="_top"><span class="function">path</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/quality" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/quality //apple_ref/occ/clm/BaiduPCSClient/quality //apple_ref/occ/intfcm/BaiduPCSClient/quality //apple_ref/occ/intfm/BaiduPCSClient/quality //apple_ref/occ/func/quality //apple_ref/occ/ftmplt/BaiduPCSClient/quality //apple_ref/occ/defn/quality //apple_ref/occ/macro/quality //apple_ref/doc/anysymbol/quality" target="_top"><span class="function">quality</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/width" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/width //apple_ref/occ/clm/BaiduPCSClient/width //apple_ref/occ/intfcm/BaiduPCSClient/width //apple_ref/occ/intfm/BaiduPCSClient/width //apple_ref/occ/func/width //apple_ref/occ/ftmplt/BaiduPCSClient/width //apple_ref/occ/defn/width //apple_ref/occ/macro/width //apple_ref/doc/anysymbol/width" target="_top"><span class="function">width</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/height //apple_ref/occ/data/BaiduPCSClient/height //apple_ref/occ/data/height //apple_ref/occ/clconst/BaiduPCSClient/height " machineGenerated="true" --><span class="var">height</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/thumbnail:quality:width:height:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/path;   name=thumbnail:quality:width:height:::path -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/path"></a>
+<code>path</code>
+</dt>
+<dd><p>the path of image which will generate a thumbnail</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/quality;   name=thumbnail:quality:width:height:::quality -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/quality"></a>
+<code>quality</code>
+</dt>
+<dd><p>the quality of thumbnail,(0,100]</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/width;   name=thumbnail:quality:width:height:::width -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/width"></a>
+<code>width</code>
+</dt>
+<dd><p>the width of the thumbnail, maxmum is 850</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/height;   name=thumbnail:quality:width:height:::height -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/thumbnail:quality:width:height:/height"></a>
+<code>height</code>
+</dt>
+<dd><p>the height of thumbnail, maxnum is 580</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:;   name=BaiduPCSClient::uploadData:target: --><a name="//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:"></a>
+<h3><a name="uploadData:target:">uploadData:target:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:;name=start --><!-- begin abstract --></p>
+<p>the method to upload data without listener
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileInfoResponse/index.html#//apple_ref/occ/cl/PCSFileInfoResponse" logicalPath="//apple_ref/occ/cl/PCSFileInfoResponse" target="_top"><span class="type">PCSFileInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/uploadData" target="_top"><span class="function">uploadData</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/target //apple_ref/occ/data/BaiduPCSClient/target //apple_ref/occ/data/target //apple_ref/occ/clconst/BaiduPCSClient/target " machineGenerated="true" --><span class="var">target</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:/source;   name=uploadData:target:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the source to upload</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:/target;   name=uploadData:target:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the target location to upload</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:;   name=BaiduPCSClient::uploadData:target:listener: --><a name="//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:"></a>
+<h3><a name="uploadData:target:listener:">uploadData:target:listener:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:;name=start --><!-- begin abstract --></p>
+<p>the method to upload data with listener
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSFileInfoResponse/index.html#//apple_ref/occ/cl/PCSFileInfoResponse" logicalPath="//apple_ref/occ/cl/PCSFileInfoResponse" target="_top"><span class="type">PCSFileInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/uploadData" target="_top"><span class="function">uploadData</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSData //apple_ref/occ/tdef/NSData //apple_ref/occ/tag/NSData //apple_ref/occ/struct/NSData //apple_ref/occ/intf/NSData //apple_ref/doc/anysymbol/NSData" machineGenerated="true" --><span class="type">NSData</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/source //apple_ref/occ/clm/BaiduPCSClient/source //apple_ref/occ/intfcm/BaiduPCSClient/source //apple_ref/occ/intfm/BaiduPCSClient/source //apple_ref/occ/func/source //apple_ref/occ/ftmplt/BaiduPCSClient/source //apple_ref/occ/defn/source //apple_ref/occ/macro/source //apple_ref/doc/anysymbol/source" target="_top"><span class="function">source</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)
+        <a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/target //apple_ref/occ/clm/BaiduPCSClient/target //apple_ref/occ/intfcm/BaiduPCSClient/target //apple_ref/occ/intfm/BaiduPCSClient/target //apple_ref/occ/func/target //apple_ref/occ/ftmplt/BaiduPCSClient/target //apple_ref/occ/defn/target //apple_ref/occ/macro/target //apple_ref/doc/anysymbol/target" target="_top"><span class="function">target</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/id //apple_ref/occ/tdef/id //apple_ref/occ/tag/id //apple_ref/occ/struct/id //apple_ref/occ/intf/id //apple_ref/doc/anysymbol/id" machineGenerated="true" --><span class="type">id</span><!-- /a -->&lt;<span class="param">BaiduPCSStatusListener</span>&gt;)<!-- a logicalPath="//apple_ref/occ/econst/listener //apple_ref/occ/data/BaiduPCSClient/listener //apple_ref/occ/data/listener //apple_ref/occ/clconst/BaiduPCSClient/listener " machineGenerated="true" --><span class="var">listener</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/uploadData:target:listener:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source;   name=uploadData:target:listener:::source -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/source"></a>
+<code>source</code>
+</dt>
+<dd><p>the source to upload</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target;   name=uploadData:target:listener:::target -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/target"></a>
+<code>target</code>
+</dt>
+<dd><p>the target location to upload</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/listener;   name=uploadData:target:listener:::listener -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/uploadData:target:listener:/listener"></a>
+<code>listener</code>
+</dt>
+<dd><p>the listener to observe the action</p></dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/videoStream;   name=BaiduPCSClient::videoStream --><a name="//apple_ref/occ/instm/BaiduPCSClient/videoStream"></a>
+<h3><a name="videoStream">videoStream</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStream;name=start --><!-- begin abstract --></p>
+<p>Get the list of all the video files by stream. You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStream;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStream;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/videoStream //apple_ref/occ/data/BaiduPCSClient/videoStream //apple_ref/occ/data/videoStream //apple_ref/occ/clconst/BaiduPCSClient/videoStream " machineGenerated="true" --><span class="var">videoStream</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStream;name=end --></pre>
+</div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:;   name=BaiduPCSClient::videoStreamWithLimit:end: --><a name="//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:"></a>
+<h3><a name="videoStreamWithLimit:end:">videoStreamWithLimit:end:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:;name=start --><!-- begin abstract --></p>
+<p>Get the list of the video files by stream with num limit.You should apply for special permission to use this method
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:;name=start -->-(<a machinegenerated="true" href="../../../BaiduPCSActionInfo_h/Classes/PCSListInfoResponse/index.html#//apple_ref/occ/cl/PCSListInfoResponse" logicalPath="//apple_ref/occ/cl/PCSListInfoResponse" target="_top"><span class="type">PCSListInfoResponse</span></a><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit" target="_top"><span class="function">videoStreamWithLimit</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start" logicalPath="//apple_ref/occ/instm/BaiduPCSClient/start //apple_ref/occ/clm/BaiduPCSClient/start //apple_ref/occ/intfcm/BaiduPCSClient/start //apple_ref/occ/intfm/BaiduPCSClient/start //apple_ref/occ/func/start //apple_ref/occ/ftmplt/BaiduPCSClient/start //apple_ref/occ/defn/start //apple_ref/occ/macro/start //apple_ref/doc/anysymbol/start" target="_top"><span class="function">start</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/struct/int //apple_ref/occ/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/end //apple_ref/occ/data/BaiduPCSClient/end //apple_ref/occ/data/end //apple_ref/occ/clconst/BaiduPCSClient/end " machineGenerated="true" --><span class="var">end</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instm/BaiduPCSClient/videoStreamWithLimit:end:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start;   name=videoStreamWithLimit:end:::start -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/start"></a>
+<code>start</code>
+</dt>
+<dd><p>The start num of the file to list.if start &lt; 0, start from 0</p></dd>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/end;   name=videoStreamWithLimit:end:::end -->
+<a name="//apple_ref/doc/methodparam/BaiduPCSClient/videoStreamWithLimit:end:/end"></a>
+<code>end</code>
+</dt>
+<dd><p>The end num of the file to list.if end &lt; 0, there is no end</p></dd>
+</dl>
+</div>
+<hr class="betweenSections">
+<a name="HeaderDoc_props"></a>
+<h2 class="h2tight">Properties</h2>
+<dl>
+<dt><tt><a href="index.html#//apple_ref/occ/instp/BaiduPCSClient/accessToken" target="_top">accessToken</a></tt></dt>
+<dd><p>the access token
+</p></dd>
+</dl>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=instp;  uid=//apple_ref/occ/instp/BaiduPCSClient/accessToken;   name=BaiduPCSClient::accessToken --><a name="//apple_ref/occ/instp/BaiduPCSClient/accessToken"></a>
+<h3><a name="accessToken">accessToken</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/instp/BaiduPCSClient/accessToken;name=start --><!-- begin abstract --></p>
+<p>the access token
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/instp/BaiduPCSClient/accessToken;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/instp/BaiduPCSClient/accessToken;name=start -->@property (<span class="param">strong</span>,
+    <span class="param">nonatomic</span>) <!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/occ/econst/accessToken //apple_ref/occ/data/BaiduPCSClient/accessToken //apple_ref/occ/data/accessToken //apple_ref/occ/clconst/BaiduPCSClient/accessToken " machineGenerated="true" --><span class="var">accessToken</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/instp/BaiduPCSClient/accessToken;name=end --></pre>
+</div>
+<p class="gapBeforeFooter">&nbsp;</p>
+<hr class="afterFooter">
+<div class="hd_copyright_and_timestamp">
+<p class="hd_timestamp">Last Updated: Tuesday, November 20, 2012
+</p>
+</div>
+</td>
+</tr></table>
+</body>
+</html>
